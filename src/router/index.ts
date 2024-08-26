@@ -13,6 +13,16 @@ NProgress.configure({ showSpinner: true, parent: '#app' })
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_APP_PUBLIC_PATH),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (to.path === from.path)
+      return undefined
+
+    if (savedPosition)
+      return savedPosition
+
+    else
+      return { top: 0 }
+  },
 })
 
 router.beforeEach((to: EnhancedRouteLocation, from, next) => {

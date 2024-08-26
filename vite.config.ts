@@ -56,6 +56,17 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     build: {
       cssCodeSplit: false,
       chunkSizeWarningLimit: 2048,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            // 拆分代码，这个就是分包，配置完后自动按需加载，现在还比不上webpack的splitchunk，不过也能用了。
+            vue: ['vue', 'vue-router', 'pinia'],
+            vant: ['vant'],
+            // sentry: ['@sentry/vue'],
+            // echarts: ['echarts'],
+          },
+        },
+      },
     },
 
     optimizeDeps: { include, exclude },

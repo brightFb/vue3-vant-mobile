@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createHead } from '@unhead/vue'
+import { registerSW } from 'virtual:pwa-register'
 import App from '@/App.vue'
 import router from '@/router'
 import pinia from '@/stores'
@@ -20,6 +21,8 @@ import 'vant/es/toast/style'
 import 'vant/es/dialog/style'
 import 'vant/es/notify/style'
 import 'vant/es/image-preview/style'
+
+registerSW({ immediate: true })
 
 const app = createApp(App)
 const head = createHead()

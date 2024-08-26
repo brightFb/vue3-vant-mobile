@@ -41,7 +41,6 @@ function onLanguageConfirm(event: { selectedOptions: PickerColumn }) {
 
 const menuItems = computed(() => ([
   { title: t('menus.mockGuide'), route: 'mock' },
-  { title: t('menus.echartsDemo'), route: 'charts' },
   { title: t('menus.unocssExample'), route: 'unocss' },
   { title: t('menus.persistPiniaState'), route: 'counter' },
   { title: t('menus.404Demo'), route: 'unknown' },
@@ -58,20 +57,10 @@ const menuItems = computed(() => ([
         </template>
       </VanCell>
 
-      <VanCell
-        is-link
-        :title="t('menus.language')"
-        :value="language"
-        @click="showLanguagePicker = true"
-      />
+      <VanCell is-link :title="t('menus.language')" :value="language" @click="showLanguagePicker = true" />
 
       <van-popup v-model:show="showLanguagePicker" position="bottom">
-        <van-picker
-          v-model="languageValues"
-          :columns="languageColumns"
-          @confirm="onLanguageConfirm"
-          @cancel="showLanguagePicker = false"
-        />
+        <van-picker v-model="languageValues" :columns="languageColumns" @confirm="onLanguageConfirm" @cancel="showLanguagePicker = false" />
       </van-popup>
 
       <template v-for="item in menuItems" :key="item.route">
